@@ -15,14 +15,12 @@ app.get('/listener', function (req, res, next) {
 
 io.on('connection', function (client) {
     console.log('Client connected...');
+});
 
-    client.on('play', function (data) {
-        console.log(data);
-        console.log('note played');
-        //client.emit('broad', data);
-        client.broadcast.emit('broad', data);
-    });
-
+client.on('play', function (data) {
+    console.log(data);
+    console.log('note played');
+    client.broadcast.emit('broad', data);
 });
 
 server.listen(4200);
